@@ -7,10 +7,10 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-public class LeitorAslcApplication {
+public class LeitorArquivoApplication {
 
 	public static void main(String[] args)  {
-		ApplicationContext ctx = SpringApplication.run(LeitorAslcApplication.class, args);
+		ApplicationContext ctx = SpringApplication.run(LeitorArquivoApplication.class, args);
 	}
 
     @Bean
