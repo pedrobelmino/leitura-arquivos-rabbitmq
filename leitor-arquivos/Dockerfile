@@ -1,5 +1,4 @@
 FROM maven:3.6-openjdk-11
-RUN apt-get update && apt-get -y install netcat
 RUN mkdir /files
 COPY pom.xml /tmp/
 COPY src /tmp/src/

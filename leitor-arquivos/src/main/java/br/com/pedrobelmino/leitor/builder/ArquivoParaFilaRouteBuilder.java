@@ -8,10 +8,10 @@ public class ArquivoParaFilaRouteBuilder extends RouteBuilder {
 
     @Override
     public void configure() throws Exception {
-        System.out.println("/files mapped ");
 		String exchange = System.getenv("RABBITMQ_DEFAULT_EXCHANGE");
-        from("file:/files/")
-                .log("Transferindo arquivo ${header:CamelFileNameOnly} para exchange "+exchange)
-                .to("rabbitmq:"+exchange);
+
+
+        from("rabbitmq:"+exchange)
+                .log("Recebendo arquivo ${header:CamelFileNameOnly}");
     }
 }

@@ -1,16 +1,20 @@
 version: "3.3"
+networks: 
+   mensageria:
 services:
   rabbitmq:
-    network_mode: "host"
+    networks: 
+      - mensageria
     image: rabbitmq:3.6-management
     ports:
       - 5672:5672
-      - 15672:15672
+      - 8081:15672
     environment:
         RABBITMQ_DEFAULT_USER: 'guest'
         RABBITMQ_DEFAULT_PASS: 'guest'     
   leitor-arquivos:
-    network_mode: "host"
+    networks: 
+      - mensageria
     build:
       context: ./leitor-arquivos
     volumes:
@@ -18,7 +22,7 @@ services:
     environment:
         RABBITMQ_DEFAULT_USER: 'guest'
         RABBITMQ_DEFAULT_PASS: 'guest' 
-        RABBITMQ_DEFAULT_HOST: 'localhost' 
+        RABBITMQ_DEFAULT_HOST: 'rabbitmq' 
         RABBITMQ_DEFAULT_PORT: '5672' 
         RABBITMQ_DEFAULT_EXCHANGE: 'ARQUIVOS' 
         
